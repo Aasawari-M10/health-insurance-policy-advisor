@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from app.schemas import AskRequest, AskResponse
+from app.services.plan_service import get_all_plans
 
 
 router = APIRouter()
@@ -15,9 +16,7 @@ def health_check():
 
 @router.get("/plans")
 def get_plans():
-    return {
-        "message": "Plans endpoint is ready. Business logic will be added later."
-    }
+    return get_all_plans()
 
 
 @router.post("/ask", response_model=AskResponse)

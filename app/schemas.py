@@ -27,3 +27,10 @@ class AskResponse(BaseModel):
     plan_id: Optional[str] = None
     version: Optional[str] = None
     source_clauses: list[str] = []
+
+class PlanResponse(BaseModel):
+    plan_id: str
+    plan_name: str
+    version: str
+    effective_date: str
+    status: str
