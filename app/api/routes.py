@@ -1,5 +1,7 @@
 from fastapi import APIRouter
 
+from app.schemas import AskRequest, AskResponse
+
 
 router = APIRouter()
 
@@ -18,8 +20,12 @@ def get_plans():
     }
 
 
-@router.post("/ask")
-def ask_question():
-    return {
-        "message": "Ask endpoint is ready. Business logic will be added later."
-    }
+@router.post("/ask", response_model=AskResponse)
+def ask_question(request: AskRequest):
+    return AskResponse(
+        answer=f"Question received: {request.question}",
+        intent=None,
+        plan_id=request.plan_id,
+        version=request.version,
+        source_clauses=[],
+    )
