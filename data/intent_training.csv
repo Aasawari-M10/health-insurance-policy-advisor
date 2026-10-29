@@ -1,0 +1,501 @@
+query_id,customer_question,intent
+INT-EXCLUSION-031,"Please tell me, which treatments are excluded?",exclusion
+INT-ESCALATION-019,Can you tell me i need a guaranteed claim approval.,escalation
+INT-ESCALATION-057,Can you tell me tell me my claim will definitely be accepted.,escalation
+INT-WAITING_PERIOD-001,How long do I need to wait?,waiting_period
+INT-BENEFIT-025,I want to know: What does my policy cover?,benefit
+INT-WAITING_PERIOD-009,what waiting period applies to hospitalization?,waiting_period
+INT-EXCLUSION-022,I want to know: Is cosmetic treatment excluded?,exclusion
+INT-DOCUMENTATION-029,what documents should i provide with my request?,documentation
+INT-DOCUMENTATION-071,I want to know: What should I submit for hospitalization?,documentation
+INT-WAITING_PERIOD-038,When can I use this benefit?,waiting_period
+INT-WAITING_PERIOD-027,how long do i need to wait?,waiting_period
+INT-BENEFIT-027,I want to know: Can you explain my hospitalization benefits?,benefit
+INT-ESCALATION-076,Can you tell me i need a guaranteed claim approval.,escalation
+INT-ESCALATION-026,I want to know: Tell me for certain that the claim will be accepted.,escalation
+INT-EXCLUSION-088,what does my plan not cover?,exclusion
+INT-ESCALATION-023,guarantee my reimbursement.,escalation
+INT-DOCUMENTATION-054,Can you tell me what should i submit for hospitalization?,documentation
+INT-DOCUMENTATION-008,Which supporting documents are required?,documentation
+INT-WAITING_PERIOD-100,I want to know: When does this benefit become applicable?,waiting_period
+INT-EXCLUSION-089,Can you tell me is cosmetic treatment excluded?,exclusion
+INT-WAITING_PERIOD-050,I want to know: When can I use this benefit?,waiting_period
+INT-ESCALATION-093,Can you tell me guarantee my reimbursement.,escalation
+INT-BENEFIT-067,Can you explain my hospitalization benefits?,benefit
+INT-WAITING_PERIOD-043,I want to know: Do I need to wait before using this benefit?,waiting_period
+INT-ESCALATION-091,Can you tell me can you approve my claim?,escalation
+INT-ESCALATION-077,Can you guarantee coverage for my claim?,escalation
+INT-BENEFIT-031,Does my plan include hospital benefits?,benefit
+INT-BENEFIT-003,does my plan include hospital benefits?,benefit
+INT-BENEFIT-096,Does my plan include hospital benefits?,benefit
+INT-EXCLUSION-020,I want to know: What does my plan not cover?,exclusion
+INT-EXCLUSION-066,which treatments are excluded?,exclusion
+INT-BENEFIT-035,can you explain my hospitalization benefits?,benefit
+INT-ESCALATION-086,Confirm that I will definitely receive payment.,escalation
+INT-WAITING_PERIOD-028,Can you tell me is there a waiting period for a planned procedure?,waiting_period
+INT-BENEFIT-010,I want to know: What benefits are included in my plan?,benefit
+INT-DOCUMENTATION-053,Can you tell me which supporting documents are required?,documentation
+INT-DOCUMENTATION-045,I want to know: Which documents are required for hospitalization?,documentation
+INT-ESCALATION-068,Can you guarantee coverage for my claim?,escalation
+INT-BENEFIT-022,What benefits can I use?,benefit
+INT-EXCLUSION-056,which treatments are excluded?,exclusion
+INT-ESCALATION-005,"Please tell me, guarantee that my claim will be approved.",escalation
+INT-WAITING_PERIOD-075,How long do I need to wait?,waiting_period
+INT-WAITING_PERIOD-083,"Please tell me, when does this benefit become applicable?",waiting_period
+INT-BENEFIT-069,Can you tell me is hospitalization covered?,benefit
+INT-BENEFIT-066,"Please tell me, does this plan provide inpatient benefits?",benefit
+INT-BENEFIT-082,what benefits are included in my plan?,benefit
+INT-EXCLUSION-092,Does my policy exclude cosmetic procedures?,exclusion
+INT-BENEFIT-002,what benefits can i use?,benefit
+INT-BENEFIT-091,does this plan provide inpatient benefits?,benefit
+INT-ESCALATION-027,can you promise that my claim will be paid?,escalation
+INT-DOCUMENTATION-065,"Please tell me, which documents do i need to provide?",documentation
+INT-DOCUMENTATION-041,What documents should I provide with my request?,documentation
+INT-DOCUMENTATION-088,what documents are needed for a planned procedure?,documentation
+INT-ESCALATION-037,tell me my claim will definitely be accepted.,escalation
+INT-ESCALATION-052,can you promise that my claim will be paid?,escalation
+INT-ESCALATION-014,I want to know: Confirm that I will definitely receive payment.,escalation
+INT-WAITING_PERIOD-073,How many days is the waiting period?,waiting_period
+INT-ESCALATION-041,I want to know: Can you approve my claim?,escalation
+INT-EXCLUSION-025,I want to know: What are the general exclusions in my policy?,exclusion
+INT-EXCLUSION-081,Can you tell me can you explain the policy exclusions?,exclusion
+INT-WAITING_PERIOD-090,how long do i need to wait?,waiting_period
+INT-DOCUMENTATION-004,Can you tell me what documents do i need?,documentation
+INT-DOCUMENTATION-069,What documents are needed for a planned procedure?,documentation
+INT-WAITING_PERIOD-025,How long do I need to wait?,waiting_period
+INT-BENEFIT-089,I want to know: Does this plan provide inpatient benefits?,benefit
+INT-EXCLUSION-049,tell me what is excluded from this plan.,exclusion
+INT-EXCLUSION-091,Can you tell me are there treatments that this policy does not cover?,exclusion
+INT-WAITING_PERIOD-080,I want to know: How many days is the waiting period?,waiting_period
+INT-BENEFIT-062,I want to know: Is this treatment covered under my plan?,benefit
+INT-WAITING_PERIOD-033,"Please tell me, when does this benefit become applicable?",waiting_period
+INT-EXCLUSION-061,what are the general exclusions in my policy?,exclusion
+INT-WAITING_PERIOD-082,What is the waiting period?,waiting_period
+INT-ESCALATION-064,"Please tell me, tell me for certain that the claim will be accepted.",escalation
+INT-BENEFIT-079,What coverage does my policy provide?,benefit
+INT-EXCLUSION-073,Can you tell me what services are not covered?,exclusion
+INT-BENEFIT-037,tell me about the benefits in my policy.,benefit
+INT-WAITING_PERIOD-078,explain the waiting period in my policy.,waiting_period
+INT-WAITING_PERIOD-046,Is there a waiting period for a planned procedure?,waiting_period
+INT-BENEFIT-046,I want to know: Does my plan include hospital benefits?,benefit
+INT-WAITING_PERIOD-012,Can you tell me how long do i need to wait?,waiting_period
+INT-ESCALATION-002,Can you tell me can you approve my claim?,escalation
+INT-BENEFIT-043,Does my plan include hospital benefits?,benefit
+INT-WAITING_PERIOD-062,I want to know: Explain the waiting period in my policy.,waiting_period
+INT-BENEFIT-087,I want to know: What coverage does my policy provide?,benefit
+INT-ESCALATION-015,I want to know: I need a guaranteed claim approval.,escalation
+INT-WAITING_PERIOD-049,I want to know: How long do I need to wait?,waiting_period
+INT-DOCUMENTATION-059,I want to know: What should I submit for hospitalization?,documentation
+INT-WAITING_PERIOD-037,"Please tell me, when can i use this benefit?",waiting_period
+INT-ESCALATION-024,Can you approve my claim?,escalation
+INT-DOCUMENTATION-049,Can you tell me tell me the required documentation.,documentation
+INT-WAITING_PERIOD-061,Can you tell me what is the waiting period?,waiting_period
+INT-DOCUMENTATION-074,What documents do I need?,documentation
+INT-BENEFIT-011,I want to know: Does my plan include hospital benefits?,benefit
+INT-EXCLUSION-087,Can you tell me which treatments are excluded?,exclusion
+INT-EXCLUSION-032,Does my policy exclude cosmetic procedures?,exclusion
+INT-DOCUMENTATION-039,what documents should i provide with my request?,documentation
+INT-DOCUMENTATION-081,"Please tell me, which supporting documents are required?",documentation
+INT-EXCLUSION-062,Can you tell me does my policy exclude cosmetic procedures?,exclusion
+INT-BENEFIT-048,Can you tell me what coverage does my policy provide?,benefit
+INT-ESCALATION-085,I want to know: Guarantee that my claim will be approved.,escalation
+INT-EXCLUSION-001,what does my plan not cover?,exclusion
+INT-WAITING_PERIOD-004,I want to know: How long do I need to wait?,waiting_period
+INT-EXCLUSION-008,Can you tell me what is excluded from my policy?,exclusion
+INT-DOCUMENTATION-079,I want to know: Which supporting documents are required?,documentation
+INT-EXCLUSION-085,Are there treatments that this policy does not cover?,exclusion
+INT-BENEFIT-094,Can you tell me does this plan provide inpatient benefits?,benefit
+INT-ESCALATION-082,I want to know: Guarantee that my claim will be approved.,escalation
+INT-ESCALATION-034,"Please tell me, guarantee my reimbursement.",escalation
+INT-EXCLUSION-094,I want to know: Does my policy exclude cosmetic procedures?,exclusion
+INT-WAITING_PERIOD-006,what waiting period applies to hospitalization?,waiting_period
+INT-BENEFIT-044,Can you tell me can you explain my hospitalization benefits?,benefit
+INT-ESCALATION-025,tell me for certain that the claim will be accepted.,escalation
+INT-EXCLUSION-006,can you explain the policy exclusions?,exclusion
+INT-BENEFIT-058,What benefits are included in my plan?,benefit
+INT-ESCALATION-004,promise that this treatment will be approved.,escalation
+INT-WAITING_PERIOD-044,Is there a waiting period for a planned procedure?,waiting_period
+INT-EXCLUSION-067,Can you tell me are there treatments that this policy does not cover?,exclusion
+INT-WAITING_PERIOD-060,Does my plan have a waiting period?,waiting_period
+INT-EXCLUSION-007,Can you tell me is cosmetic treatment excluded?,exclusion
+INT-BENEFIT-099,I want to know: Does my plan include hospital benefits?,benefit
+INT-ESCALATION-012,can you promise that my claim will be paid?,escalation
+INT-DOCUMENTATION-052,I want to know: Which documents do I need to provide?,documentation
+INT-EXCLUSION-035,I want to know: Can you explain the policy exclusions?,exclusion
+INT-ESCALATION-061,"Please tell me, can you guarantee coverage for my claim?",escalation
+INT-DOCUMENTATION-096,which supporting documents are required?,documentation
+INT-DOCUMENTATION-007,I want to know: What papers should I submit?,documentation
+INT-EXCLUSION-016,I want to know: What services are not covered?,exclusion
+INT-ESCALATION-059,Can you tell me i need a guaranteed claim approval.,escalation
+INT-WAITING_PERIOD-011,When can I use this benefit?,waiting_period
+INT-WAITING_PERIOD-030,Can you tell me when can i use this benefit?,waiting_period
+INT-EXCLUSION-012,Which treatments are excluded?,exclusion
+INT-BENEFIT-076,I want to know: Is hospitalization covered?,benefit
+INT-DOCUMENTATION-023,Which documents are required for hospitalization?,documentation
+INT-BENEFIT-084,Can you tell me what does my policy cover?,benefit
+INT-WAITING_PERIOD-086,how many days is the waiting period?,waiting_period
+INT-DOCUMENTATION-094,tell me the required documentation.,documentation
+INT-ESCALATION-022,I need a guaranteed claim approval.,escalation
+INT-WAITING_PERIOD-085,does my plan have a waiting period?,waiting_period
+INT-EXCLUSION-052,I want to know: Can you explain the policy exclusions?,exclusion
+INT-DOCUMENTATION-022,tell me the required documentation.,documentation
+INT-ESCALATION-063,Promise that this treatment will be approved.,escalation
+INT-ESCALATION-035,i need a guaranteed claim approval.,escalation
+INT-DOCUMENTATION-066,I want to know: Which documents do I need to provide?,documentation
+INT-WAITING_PERIOD-057,"Please tell me, when can i use this benefit?",waiting_period
+INT-WAITING_PERIOD-010,Can you tell me what waiting period applies to hospitalization?,waiting_period
+INT-DOCUMENTATION-006,Can you tell me what papers should i submit?,documentation
+INT-ESCALATION-075,"Please tell me, tell me my claim will definitely be accepted.",escalation
+INT-EXCLUSION-017,I want to know: Does my policy exclude cosmetic procedures?,exclusion
+INT-EXCLUSION-084,"Please tell me, what services are not covered?",exclusion
+INT-ESCALATION-020,I want to know: Can you approve my claim?,escalation
+INT-ESCALATION-056,Can you tell me tell me for certain that the claim will be accepted.,escalation
+INT-WAITING_PERIOD-034,"Please tell me, what waiting period applies to hospitalization?",waiting_period
+INT-ESCALATION-038,"Please tell me, tell me for certain that the claim will be accepted.",escalation
+INT-BENEFIT-057,What coverage does my policy provide?,benefit
+INT-ESCALATION-058,can you approve my claim?,escalation
+INT-DOCUMENTATION-032,I want to know: What documents should I provide with my request?,documentation
+INT-BENEFIT-028,Does my plan include hospital benefits?,benefit
+INT-EXCLUSION-096,Can you tell me does my policy exclude cosmetic procedures?,exclusion
+INT-EXCLUSION-098,Can you tell me can you explain the policy exclusions?,exclusion
+INT-EXCLUSION-024,Can you tell me what services are not covered?,exclusion
+INT-WAITING_PERIOD-015,What is the waiting period?,waiting_period
+INT-DOCUMENTATION-043,I want to know: Tell me the required documentation.,documentation
+INT-BENEFIT-017,is hospitalization covered?,benefit
+INT-BENEFIT-030,What benefits can I use?,benefit
+INT-ESCALATION-017,Can you tell me confirm that i will definitely receive payment.,escalation
+INT-EXCLUSION-046,I want to know: Does my policy exclude cosmetic procedures?,exclusion
+INT-WAITING_PERIOD-099,I want to know: Does my plan have a waiting period?,waiting_period
+INT-BENEFIT-014,What benefits can I use?,benefit
+INT-DOCUMENTATION-005,Can you tell me tell me the required documentation.,documentation
+INT-ESCALATION-003,Can you tell me can you guarantee coverage for my claim?,escalation
+INT-ESCALATION-028,Can you tell me guarantee that my claim will be approved.,escalation
+INT-BENEFIT-083,Tell me about the benefits in my policy.,benefit
+INT-WAITING_PERIOD-093,do i need to wait before using this benefit?,waiting_period
+INT-DOCUMENTATION-016,"Please tell me, what should i submit for hospitalization?",documentation
+INT-ESCALATION-011,"Please tell me, i need a guaranteed claim approval.",escalation
+INT-BENEFIT-004,I want to know: What does my policy cover?,benefit
+INT-ESCALATION-060,Can you guarantee coverage for my claim?,escalation
+INT-BENEFIT-007,What benefits are included in my plan?,benefit
+INT-EXCLUSION-009,which treatments are excluded?,exclusion
+INT-DOCUMENTATION-093,which documents do i need to provide?,documentation
+INT-BENEFIT-045,What benefits can I use?,benefit
+INT-ESCALATION-053,I want to know: I need a guaranteed claim approval.,escalation
+INT-DOCUMENTATION-014,Can you tell me which documents do i need to provide?,documentation
+INT-BENEFIT-034,"Please tell me, is hospitalization covered?",benefit
+INT-ESCALATION-083,guarantee my reimbursement.,escalation
+INT-EXCLUSION-015,"Please tell me, is cosmetic treatment excluded?",exclusion
+INT-BENEFIT-001,What does my policy cover?,benefit
+INT-EXCLUSION-005,does my policy exclude cosmetic procedures?,exclusion
+INT-DOCUMENTATION-057,"Please tell me, which documents are required for hospitalization?",documentation
+INT-ESCALATION-099,I want to know: Promise that this treatment will be approved.,escalation
+INT-EXCLUSION-059,What are the general exclusions in my policy?,exclusion
+INT-ESCALATION-090,I want to know: Can you approve my claim?,escalation
+INT-EXCLUSION-045,can you explain the policy exclusions?,exclusion
+INT-BENEFIT-054,Can you tell me tell me about the benefits in my policy.,benefit
+INT-WAITING_PERIOD-042,Can you tell me explain the waiting period in my policy.,waiting_period
+INT-DOCUMENTATION-015,tell me the required documentation.,documentation
+INT-BENEFIT-053,Can you tell me tell me about the benefits in my policy.,benefit
+INT-ESCALATION-100,Can you approve my claim?,escalation
+INT-EXCLUSION-069,Which treatments are excluded?,exclusion
+INT-BENEFIT-063,I want to know: What coverage does my policy provide?,benefit
+INT-DOCUMENTATION-099,which documents do i need to provide?,documentation
+INT-EXCLUSION-002,what does my plan not cover?,exclusion
+INT-DOCUMENTATION-002,"Please tell me, what documents are needed for a planned procedure?",documentation
+INT-BENEFIT-006,Is this treatment covered under my plan?,benefit
+INT-ESCALATION-098,Can you tell me can you approve my claim?,escalation
+INT-WAITING_PERIOD-064,do i need to wait before using this benefit?,waiting_period
+INT-ESCALATION-079,tell me my claim will definitely be accepted.,escalation
+INT-DOCUMENTATION-044,"Please tell me, what documentation is required by my policy?",documentation
+INT-ESCALATION-050,I want to know: Promise that this treatment will be approved.,escalation
+INT-EXCLUSION-063,does my policy exclude cosmetic procedures?,exclusion
+INT-ESCALATION-055,I need a guaranteed claim approval.,escalation
+INT-DOCUMENTATION-085,which documents are required for hospitalization?,documentation
+INT-BENEFIT-032,"Please tell me, is this treatment covered under my plan?",benefit
+INT-BENEFIT-049,what coverage does my policy provide?,benefit
+INT-ESCALATION-031,guarantee that my claim will be approved.,escalation
+INT-DOCUMENTATION-060,Can you tell me what documents should i provide with my request?,documentation
+INT-BENEFIT-016,"Please tell me, can you explain my hospitalization benefits?",benefit
+INT-BENEFIT-092,Can you tell me what benefits can i use?,benefit
+INT-WAITING_PERIOD-066,"Please tell me, is there a waiting period for a planned procedure?",waiting_period
+INT-EXCLUSION-100,I want to know: Are there treatments that this policy does not cover?,exclusion
+INT-EXCLUSION-030,I want to know: Are there treatments that this policy does not cover?,exclusion
+INT-WAITING_PERIOD-076,do i need to wait before using this benefit?,waiting_period
+INT-EXCLUSION-068,I want to know: What is excluded from my policy?,exclusion
+INT-ESCALATION-066,Can you tell me can you approve my claim?,escalation
+INT-EXCLUSION-019,"Please tell me, is cosmetic treatment excluded?",exclusion
+INT-BENEFIT-061,Can you tell me what does my policy cover?,benefit
+INT-DOCUMENTATION-100,What should I submit for hospitalization?,documentation
+INT-ESCALATION-092,Can you tell me can you guarantee coverage for my claim?,escalation
+INT-EXCLUSION-082,"Please tell me, is cosmetic treatment excluded?",exclusion
+INT-EXCLUSION-060,Can you tell me tell me what is excluded from this plan.,exclusion
+INT-ESCALATION-030,"Please tell me, can you guarantee coverage for my claim?",escalation
+INT-BENEFIT-009,I want to know: Does this plan provide inpatient benefits?,benefit
+INT-EXCLUSION-064,What does my plan not cover?,exclusion
+INT-WAITING_PERIOD-005,"Please tell me, when can i use this benefit?",waiting_period
+INT-WAITING_PERIOD-058,when does this benefit become applicable?,waiting_period
+INT-DOCUMENTATION-087,which supporting documents are required?,documentation
+INT-EXCLUSION-014,"Please tell me, what services are not covered?",exclusion
+INT-DOCUMENTATION-031,tell me the required documentation.,documentation
+INT-EXCLUSION-071,I want to know: Tell me what is excluded from this plan.,exclusion
+INT-WAITING_PERIOD-007,do i need to wait before using this benefit?,waiting_period
+INT-ESCALATION-070,Promise that this treatment will be approved.,escalation
+INT-BENEFIT-040,"Please tell me, is this treatment covered under my plan?",benefit
+INT-DOCUMENTATION-078,Can you tell me tell me the required documentation.,documentation
+INT-ESCALATION-018,"Please tell me, can you guarantee coverage for my claim?",escalation
+INT-DOCUMENTATION-092,which documents are required for hospitalization?,documentation
+INT-WAITING_PERIOD-008,I want to know: Explain the waiting period in my policy.,waiting_period
+INT-WAITING_PERIOD-039,I want to know: Explain the waiting period in my policy.,waiting_period
+INT-ESCALATION-065,Can you tell me confirm that i will definitely receive payment.,escalation
+INT-WAITING_PERIOD-079,does my plan have a waiting period?,waiting_period
+INT-ESCALATION-089,Can you tell me tell me for certain that the claim will be accepted.,escalation
+INT-EXCLUSION-044,"Please tell me, what is excluded from my policy?",exclusion
+INT-WAITING_PERIOD-072,I want to know: What is the waiting period?,waiting_period
+INT-BENEFIT-095,what does my policy cover?,benefit
+INT-ESCALATION-009,I need a guaranteed claim approval.,escalation
+INT-BENEFIT-100,Does my plan include hospital benefits?,benefit
+INT-BENEFIT-070,"Please tell me, what benefits are included in my plan?",benefit
+INT-ESCALATION-013,I want to know: Can you promise that my claim will be paid?,escalation
+INT-DOCUMENTATION-019,Which documents do I need to provide?,documentation
+INT-EXCLUSION-065,Can you tell me is cosmetic treatment excluded?,exclusion
+INT-EXCLUSION-053,"Please tell me, what are the general exclusions in my policy?",exclusion
+INT-WAITING_PERIOD-056,"Please tell me, when can i use this benefit?",waiting_period
+INT-BENEFIT-020,"Please tell me, what does my policy cover?",benefit
+INT-DOCUMENTATION-095,Which documents do I need to provide?,documentation
+INT-BENEFIT-072,Does this plan provide inpatient benefits?,benefit
+INT-BENEFIT-060,I want to know: Is this treatment covered under my plan?,benefit
+INT-ESCALATION-071,I want to know: Confirm that I will definitely receive payment.,escalation
+INT-DOCUMENTATION-048,Can you tell me which documents are required for hospitalization?,documentation
+INT-EXCLUSION-038,I want to know: Can you explain the policy exclusions?,exclusion
+INT-BENEFIT-033,"Please tell me, what coverage does my policy provide?",benefit
+INT-WAITING_PERIOD-014,Can you tell me when does this benefit become applicable?,waiting_period
+INT-DOCUMENTATION-009,I want to know: What documentation is required by my policy?,documentation
+INT-BENEFIT-013,I want to know: What coverage does my policy provide?,benefit
+INT-EXCLUSION-042,"Please tell me, what are the general exclusions in my policy?",exclusion
+INT-ESCALATION-072,I want to know: Guarantee that my claim will be approved.,escalation
+INT-BENEFIT-056,I want to know: Is hospitalization covered?,benefit
+INT-WAITING_PERIOD-091,Do I need to wait before using this benefit?,waiting_period
+INT-DOCUMENTATION-064,"Please tell me, what documents are needed for a planned procedure?",documentation
+INT-WAITING_PERIOD-035,I want to know: When does this benefit become applicable?,waiting_period
+INT-WAITING_PERIOD-089,What is the waiting period?,waiting_period
+INT-EXCLUSION-033,I want to know: What services are not covered?,exclusion
+INT-BENEFIT-064,I want to know: What benefits can I use?,benefit
+INT-EXCLUSION-075,I want to know: Does my policy exclude cosmetic procedures?,exclusion
+INT-ESCALATION-047,Can you tell me can you guarantee coverage for my claim?,escalation
+INT-ESCALATION-042,"Please tell me, i need a guaranteed claim approval.",escalation
+INT-DOCUMENTATION-035,What documents should I provide with my request?,documentation
+INT-DOCUMENTATION-026,what documents should i provide with my request?,documentation
+INT-ESCALATION-051,Can you approve my claim?,escalation
+INT-EXCLUSION-086,what does my plan not cover?,exclusion
+INT-ESCALATION-097,Tell me for certain that the claim will be accepted.,escalation
+INT-WAITING_PERIOD-016,Can you tell me what is the waiting period?,waiting_period
+INT-BENEFIT-073,I want to know: What benefits can I use?,benefit
+INT-ESCALATION-036,Confirm that I will definitely receive payment.,escalation
+INT-EXCLUSION-040,Can you tell me does my policy exclude cosmetic procedures?,exclusion
+INT-BENEFIT-059,is hospitalization covered?,benefit
+INT-ESCALATION-032,"Please tell me, can you approve my claim?",escalation
+INT-DOCUMENTATION-010,What documents should I provide with my request?,documentation
+INT-EXCLUSION-047,"Please tell me, what are the general exclusions in my policy?",exclusion
+INT-WAITING_PERIOD-032,When does this benefit become applicable?,waiting_period
+INT-BENEFIT-085,I want to know: What does my policy cover?,benefit
+INT-WAITING_PERIOD-040,"Please tell me, what is the waiting period?",waiting_period
+INT-EXCLUSION-057,What is excluded from my policy?,exclusion
+INT-DOCUMENTATION-086,Tell me the required documentation.,documentation
+INT-WAITING_PERIOD-088,I want to know: When does this benefit become applicable?,waiting_period
+INT-EXCLUSION-077,Can you tell me tell me what is excluded from this plan.,exclusion
+INT-DOCUMENTATION-012,Can you tell me what papers should i submit?,documentation
+INT-WAITING_PERIOD-003,"Please tell me, what is the waiting period?",waiting_period
+INT-DOCUMENTATION-080,Can you tell me tell me the required documentation.,documentation
+INT-EXCLUSION-013,Can you tell me which treatments are excluded?,exclusion
+INT-WAITING_PERIOD-068,"Please tell me, does my plan have a waiting period?",waiting_period
+INT-DOCUMENTATION-037,Can you tell me what documentation is required by my policy?,documentation
+INT-ESCALATION-007,Can you tell me can you promise that my claim will be paid?,escalation
+INT-BENEFIT-068,Can you tell me what benefits can i use?,benefit
+INT-WAITING_PERIOD-087,I want to know: What waiting period applies to hospitalization?,waiting_period
+INT-ESCALATION-095,confirm that i will definitely receive payment.,escalation
+INT-BENEFIT-018,Can you explain my hospitalization benefits?,benefit
+INT-ESCALATION-049,Can you tell me guarantee that my claim will be approved.,escalation
+INT-WAITING_PERIOD-059,Can you tell me how many days is the waiting period?,waiting_period
+INT-BENEFIT-021,I want to know: Can you explain my hospitalization benefits?,benefit
+INT-BENEFIT-050,what benefits can i use?,benefit
+INT-BENEFIT-071,does this plan provide inpatient benefits?,benefit
+INT-DOCUMENTATION-075,which documents do i need to provide?,documentation
+INT-DOCUMENTATION-076,what documentation is required by my policy?,documentation
+INT-BENEFIT-098,I want to know: Tell me about the benefits in my policy.,benefit
+INT-WAITING_PERIOD-013,Can you tell me does my plan have a waiting period?,waiting_period
+INT-WAITING_PERIOD-081,"Please tell me, what waiting period applies to hospitalization?",waiting_period
+INT-DOCUMENTATION-030,"Please tell me, what should i submit for hospitalization?",documentation
+INT-WAITING_PERIOD-018,when can i use this benefit?,waiting_period
+INT-WAITING_PERIOD-047,Explain the waiting period in my policy.,waiting_period
+INT-DOCUMENTATION-073,Can you tell me what should i submit for hospitalization?,documentation
+INT-DOCUMENTATION-011,Can you tell me which documents are required for hospitalization?,documentation
+INT-BENEFIT-026,I want to know: What benefits can I use?,benefit
+INT-DOCUMENTATION-084,which documents do i need to provide?,documentation
+INT-DOCUMENTATION-063,Can you tell me what papers should i submit?,documentation
+INT-WAITING_PERIOD-041,What is the waiting period?,waiting_period
+INT-EXCLUSION-003,Does my policy exclude cosmetic procedures?,exclusion
+INT-BENEFIT-012,is this treatment covered under my plan?,benefit
+INT-ESCALATION-094,tell me my claim will definitely be accepted.,escalation
+INT-WAITING_PERIOD-052,Explain the waiting period in my policy.,waiting_period
+INT-EXCLUSION-095,I want to know: What is excluded from my policy?,exclusion
+INT-ESCALATION-084,I want to know: Can you approve my claim?,escalation
+INT-ESCALATION-074,guarantee that my claim will be approved.,escalation
+INT-DOCUMENTATION-077,I want to know: Which documents do I need to provide?,documentation
+INT-WAITING_PERIOD-022,Can you tell me how many days is the waiting period?,waiting_period
+INT-BENEFIT-055,can you explain my hospitalization benefits?,benefit
+INT-ESCALATION-088,Can you guarantee coverage for my claim?,escalation
+INT-ESCALATION-073,Can you tell me can you guarantee coverage for my claim?,escalation
+INT-WAITING_PERIOD-002,When can I use this benefit?,waiting_period
+INT-WAITING_PERIOD-055,"Please tell me, does my plan have a waiting period?",waiting_period
+INT-ESCALATION-043,Can you guarantee coverage for my claim?,escalation
+INT-WAITING_PERIOD-029,Can you tell me what waiting period applies to hospitalization?,waiting_period
+INT-EXCLUSION-018,What services are not covered?,exclusion
+INT-DOCUMENTATION-028,What should I submit for hospitalization?,documentation
+INT-DOCUMENTATION-097,Which documents do I need to provide?,documentation
+INT-ESCALATION-096,I want to know: I need a guaranteed claim approval.,escalation
+INT-ESCALATION-087,Guarantee my reimbursement.,escalation
+INT-EXCLUSION-027,what are the general exclusions in my policy?,exclusion
+INT-BENEFIT-038,does this plan provide inpatient benefits?,benefit
+INT-BENEFIT-081,what benefits can i use?,benefit
+INT-EXCLUSION-080,tell me what is excluded from this plan.,exclusion
+INT-DOCUMENTATION-047,Can you tell me what documentation is required by my policy?,documentation
+INT-ESCALATION-010,tell me for certain that the claim will be accepted.,escalation
+INT-EXCLUSION-039,what does my plan not cover?,exclusion
+INT-BENEFIT-005,I want to know: What does my policy cover?,benefit
+INT-DOCUMENTATION-042,What documents should I provide with my request?,documentation
+INT-DOCUMENTATION-067,I want to know: Which documents do I need to provide?,documentation
+INT-EXCLUSION-036,Can you tell me can you explain the policy exclusions?,exclusion
+INT-WAITING_PERIOD-031,what is the waiting period?,waiting_period
+INT-DOCUMENTATION-027,what documents are needed for a planned procedure?,documentation
+INT-EXCLUSION-037,Can you tell me what services are not covered?,exclusion
+INT-WAITING_PERIOD-019,I want to know: When can I use this benefit?,waiting_period
+INT-ESCALATION-040,guarantee that my claim will be approved.,escalation
+INT-EXCLUSION-099,I want to know: Does my policy exclude cosmetic procedures?,exclusion
+INT-EXCLUSION-055,can you explain the policy exclusions?,exclusion
+INT-WAITING_PERIOD-024,I want to know: What waiting period applies to hospitalization?,waiting_period
+INT-ESCALATION-008,Can you guarantee coverage for my claim?,escalation
+INT-DOCUMENTATION-018,Can you tell me which documents do i need to provide?,documentation
+INT-ESCALATION-062,"Please tell me, confirm that i will definitely receive payment.",escalation
+INT-DOCUMENTATION-013,What papers should I submit?,documentation
+INT-BENEFIT-041,does this plan provide inpatient benefits?,benefit
+INT-BENEFIT-090,is this treatment covered under my plan?,benefit
+INT-BENEFIT-088,"Please tell me, is hospitalization covered?",benefit
+INT-BENEFIT-093,Can you tell me can you explain my hospitalization benefits?,benefit
+INT-DOCUMENTATION-050,Can you tell me what papers should i submit?,documentation
+INT-EXCLUSION-090,"Please tell me, does my policy exclude cosmetic procedures?",exclusion
+INT-ESCALATION-069,"Please tell me, promise that this treatment will be approved.",escalation
+INT-EXCLUSION-072,I want to know: Are there treatments that this policy does not cover?,exclusion
+INT-WAITING_PERIOD-026,Do I need to wait before using this benefit?,waiting_period
+INT-BENEFIT-075,"Please tell me, is hospitalization covered?",benefit
+INT-EXCLUSION-021,Can you explain the policy exclusions?,exclusion
+INT-WAITING_PERIOD-092,I want to know: Does my plan have a waiting period?,waiting_period
+INT-WAITING_PERIOD-084,What is the waiting period?,waiting_period
+INT-WAITING_PERIOD-051,Explain the waiting period in my policy.,waiting_period
+INT-BENEFIT-029,what benefits are included in my plan?,benefit
+INT-WAITING_PERIOD-067,how long do i need to wait?,waiting_period
+INT-BENEFIT-024,Can you tell me what does my policy cover?,benefit
+INT-BENEFIT-015,Can you tell me is hospitalization covered?,benefit
+INT-WAITING_PERIOD-054,I want to know: Explain the waiting period in my policy.,waiting_period
+INT-DOCUMENTATION-056,tell me the required documentation.,documentation
+INT-BENEFIT-086,is hospitalization covered?,benefit
+INT-EXCLUSION-028,Can you explain the policy exclusions?,exclusion
+INT-ESCALATION-045,"Please tell me, confirm that i will definitely receive payment.",escalation
+INT-DOCUMENTATION-061,Tell me the required documentation.,documentation
+INT-DOCUMENTATION-025,What documents are needed for a planned procedure?,documentation
+INT-DOCUMENTATION-090,I want to know: What documents should I provide with my request?,documentation
+INT-BENEFIT-051,I want to know: Does my plan include hospital benefits?,benefit
+INT-EXCLUSION-023,"Please tell me, does my policy exclude cosmetic procedures?",exclusion
+INT-BENEFIT-047,can you explain my hospitalization benefits?,benefit
+INT-DOCUMENTATION-083,"Please tell me, which documents do i need to provide?",documentation
+INT-WAITING_PERIOD-017,Does my plan have a waiting period?,waiting_period
+INT-WAITING_PERIOD-048,Can you tell me when can i use this benefit?,waiting_period
+INT-DOCUMENTATION-051,I want to know: What papers should I submit?,documentation
+INT-DOCUMENTATION-024,what documents do i need?,documentation
+INT-WAITING_PERIOD-021,when does this benefit become applicable?,waiting_period
+INT-BENEFIT-036,What benefits can I use?,benefit
+INT-DOCUMENTATION-017,Can you tell me tell me the required documentation.,documentation
+INT-ESCALATION-054,"Please tell me, guarantee that my claim will be approved.",escalation
+INT-EXCLUSION-078,can you explain the policy exclusions?,exclusion
+INT-EXCLUSION-050,Can you tell me are there treatments that this policy does not cover?,exclusion
+INT-DOCUMENTATION-089,"Please tell me, what should i submit for hospitalization?",documentation
+INT-DOCUMENTATION-068,I want to know: What documents do I need?,documentation
+INT-DOCUMENTATION-021,Which supporting documents are required?,documentation
+INT-ESCALATION-067,Tell me my claim will definitely be accepted.,escalation
+INT-WAITING_PERIOD-095,"Please tell me, what is the waiting period?",waiting_period
+INT-EXCLUSION-074,I want to know: What are the general exclusions in my policy?,exclusion
+INT-DOCUMENTATION-046,Tell me the required documentation.,documentation
+INT-WAITING_PERIOD-069,Can you tell me is there a waiting period for a planned procedure?,waiting_period
+INT-BENEFIT-042,Can you explain my hospitalization benefits?,benefit
+INT-DOCUMENTATION-033,which documents are required for hospitalization?,documentation
+INT-EXCLUSION-004,"Please tell me, what does my plan not cover?",exclusion
+INT-DOCUMENTATION-055,"Please tell me, what documents should i provide with my request?",documentation
+INT-DOCUMENTATION-020,What should I submit for hospitalization?,documentation
+INT-WAITING_PERIOD-074,"Please tell me, is there a waiting period for a planned procedure?",waiting_period
+INT-WAITING_PERIOD-036,what waiting period applies to hospitalization?,waiting_period
+INT-ESCALATION-001,I want to know: Guarantee that my claim will be approved.,escalation
+INT-EXCLUSION-041,I want to know: What does my plan not cover?,exclusion
+INT-BENEFIT-039,Can you tell me is hospitalization covered?,benefit
+INT-BENEFIT-080,"Please tell me, what does my policy cover?",benefit
+INT-DOCUMENTATION-036,I want to know: Which documents do I need to provide?,documentation
+INT-EXCLUSION-010,"Please tell me, tell me what is excluded from this plan.",exclusion
+INT-BENEFIT-074,tell me about the benefits in my policy.,benefit
+INT-DOCUMENTATION-070,Can you tell me what documents are needed for a planned procedure?,documentation
+INT-BENEFIT-008,does my plan include hospital benefits?,benefit
+INT-ESCALATION-081,Can you guarantee coverage for my claim?,escalation
+INT-EXCLUSION-070,tell me what is excluded from this plan.,exclusion
+INT-ESCALATION-048,I want to know: Can you promise that my claim will be paid?,escalation
+INT-EXCLUSION-026,Can you tell me is cosmetic treatment excluded?,exclusion
+INT-ESCALATION-033,Can you guarantee coverage for my claim?,escalation
+INT-BENEFIT-052,"Please tell me, does this plan provide inpatient benefits?",benefit
+INT-ESCALATION-080,Can you tell me can you approve my claim?,escalation
+INT-WAITING_PERIOD-070,"Please tell me, do i need to wait before using this benefit?",waiting_period
+INT-DOCUMENTATION-003,Can you tell me what documentation is required by my policy?,documentation
+INT-EXCLUSION-058,Can you tell me which treatments are excluded?,exclusion
+INT-BENEFIT-065,What benefits are included in my plan?,benefit
+INT-BENEFIT-019,Can you tell me what does my policy cover?,benefit
+INT-EXCLUSION-054,is cosmetic treatment excluded?,exclusion
+INT-BENEFIT-078,"Please tell me, tell me about the benefits in my policy.",benefit
+INT-DOCUMENTATION-034,Which documents do I need to provide?,documentation
+INT-ESCALATION-021,I need a guaranteed claim approval.,escalation
+INT-ESCALATION-006,Can you guarantee coverage for my claim?,escalation
+INT-DOCUMENTATION-040,"Please tell me, which documents are required for hospitalization?",documentation
+INT-WAITING_PERIOD-098,When can I use this benefit?,waiting_period
+INT-WAITING_PERIOD-096,Does my plan have a waiting period?,waiting_period
+INT-ESCALATION-016,I want to know: Guarantee my reimbursement.,escalation
+INT-DOCUMENTATION-062,"Please tell me, what should i submit for hospitalization?",documentation
+INT-EXCLUSION-043,I want to know: Does my policy exclude cosmetic procedures?,exclusion
+INT-DOCUMENTATION-082,Can you tell me tell me the required documentation.,documentation
+INT-WAITING_PERIOD-063,How long do I need to wait?,waiting_period
+INT-BENEFIT-023,I want to know: What coverage does my policy provide?,benefit
+INT-EXCLUSION-011,can you explain the policy exclusions?,exclusion
+INT-DOCUMENTATION-098,I want to know: What documents do I need?,documentation
+INT-ESCALATION-039,Tell me for certain that the claim will be accepted.,escalation
+INT-WAITING_PERIOD-020,what waiting period applies to hospitalization?,waiting_period
+INT-WAITING_PERIOD-097,does my plan have a waiting period?,waiting_period
+INT-EXCLUSION-093,Can you tell me which treatments are excluded?,exclusion
+INT-WAITING_PERIOD-023,When can I use this benefit?,waiting_period
+INT-DOCUMENTATION-058,what should i submit for hospitalization?,documentation
+INT-BENEFIT-097,Can you explain my hospitalization benefits?,benefit
+INT-ESCALATION-046,I want to know: Tell me my claim will definitely be accepted.,escalation
+INT-WAITING_PERIOD-065,"Please tell me, do i need to wait before using this benefit?",waiting_period
+INT-ESCALATION-078,"Please tell me, guarantee my reimbursement.",escalation
+INT-EXCLUSION-034,What services are not covered?,exclusion
+INT-WAITING_PERIOD-094,when does this benefit become applicable?,waiting_period
+INT-EXCLUSION-079,I want to know: Can you explain the policy exclusions?,exclusion
+INT-DOCUMENTATION-091,"Please tell me, what documents should i provide with my request?",documentation
+INT-EXCLUSION-083,"Please tell me, which treatments are excluded?",exclusion
+INT-WAITING_PERIOD-071,I want to know: Explain the waiting period in my policy.,waiting_period
+INT-WAITING_PERIOD-077,"Please tell me, how many days is the waiting period?",waiting_period
+INT-EXCLUSION-048,Can you tell me tell me what is excluded from this plan.,exclusion
+INT-EXCLUSION-076,tell me what is excluded from this plan.,exclusion
+INT-EXCLUSION-029,Does my policy exclude cosmetic procedures?,exclusion
+INT-BENEFIT-077,Does this plan provide inpatient benefits?,benefit
+INT-ESCALATION-044,"Please tell me, can you guarantee coverage for my claim?",escalation
+INT-EXCLUSION-051,What does my plan not cover?,exclusion
+INT-DOCUMENTATION-038,What documents are needed for a planned procedure?,documentation
+INT-EXCLUSION-097,"Please tell me, what is excluded from my policy?",exclusion
+INT-DOCUMENTATION-001,Can you tell me what documents are needed for a planned procedure?,documentation
+INT-ESCALATION-029,I want to know: Can you guarantee coverage for my claim?,escalation
+INT-WAITING_PERIOD-053,I want to know: When does this benefit become applicable?,waiting_period
+INT-DOCUMENTATION-072,Can you tell me what documents are needed for a planned procedure?,documentation
+INT-WAITING_PERIOD-045,Do I need to wait before using this benefit?,waiting_period

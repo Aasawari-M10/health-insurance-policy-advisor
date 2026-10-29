@@ -1,4 +1,3 @@
-
 plan_id,plan_name,version,effective_date,status
 PLAN001,Silver Health Plan,v1,2025-01-01,inactive
 PLAN001,Silver Health Plan,v2,2026-01-01,active

@@ -1,1 +1,5 @@
-
+plan_id,version,benefit_id,limit_type,synthetic_amount,waiting_days
+PLAN001,v1,SILV1-BEN-HOSP,annual,100000,120
+PLAN001,v2,SILV2-BEN-HOSP,annual,150000,90
+PLAN002,v1,GOLDV1-BEN-HOSP,annual,300000,60
+PLAN003,v1,PLATV1-BEN-HOSP,annual,500000,30
