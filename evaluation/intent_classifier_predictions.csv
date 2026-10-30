@@ -1,0 +1,34 @@
+question,actual_intent,predicted_intent,confidence,correct
+"Please tell me, what coverage does my policy provide?",benefit,benefit,0.5102,True
+I want to know: Guarantee my reimbursement.,escalation,escalation,0.6992,True
+I want to know: Tell me my claim will definitely be accepted.,escalation,escalation,0.7301,True
+Can you tell me explain the waiting period in my policy.,waiting_period,waiting_period,0.4606,True
+"Please tell me, does my policy exclude cosmetic procedures?",exclusion,exclusion,0.6398,True
+"Please tell me, is hospitalization covered?",benefit,benefit,0.3921,True
+I want to know: What does my policy cover?,benefit,benefit,0.5332,True
+Tell me my claim will definitely be accepted.,escalation,escalation,0.7154,True
+"Please tell me, what does my plan not cover?",exclusion,exclusion,0.5416,True
+How long do I need to wait?,waiting_period,waiting_period,0.4433,True
+I want to know: When can I use this benefit?,waiting_period,waiting_period,0.3787,True
+"Please tell me, how many days is the waiting period?",waiting_period,waiting_period,0.4783,True
+"Please tell me, what documents are needed for a planned procedure?",documentation,documentation,0.7116,True
+is this treatment covered under my plan?,benefit,benefit,0.5086,True
+What does my plan not cover?,exclusion,exclusion,0.564,True
+when does this benefit become applicable?,waiting_period,waiting_period,0.3746,True
+Promise that this treatment will be approved.,escalation,escalation,0.6473,True
+I want to know: Does this plan provide inpatient benefits?,benefit,benefit,0.5949,True
+does my policy exclude cosmetic procedures?,exclusion,exclusion,0.6502,True
+"Please tell me, guarantee that my claim will be approved.",escalation,escalation,0.7389,True
+confirm that i will definitely receive payment.,escalation,escalation,0.6927,True
+What documents are needed for a planned procedure?,documentation,documentation,0.7229,True
+"Please tell me, which supporting documents are required?",documentation,documentation,0.7354,True
+What documents do I need?,documentation,documentation,0.7391,True
+Does my plan have a waiting period?,waiting_period,waiting_period,0.4976,True
+can you explain the policy exclusions?,exclusion,exclusion,0.6471,True
+What should I submit for hospitalization?,documentation,documentation,0.678,True
+Can you tell me can you explain my hospitalization benefits?,benefit,benefit,0.6014,True
+is cosmetic treatment excluded?,exclusion,exclusion,0.6417,True
+"Please tell me, tell me about the benefits in my policy.",benefit,benefit,0.5758,True
+Which documents are required for hospitalization?,documentation,documentation,0.7366,True
+I want to know: Can you approve my claim?,escalation,escalation,0.7232,True
+what is the waiting period?,waiting_period,waiting_period,0.4917,True
