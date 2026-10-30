@@ -1,0 +1,34 @@
+query_id,customer_question,intent
+INT-EXCLUSION-010,"Please tell me, tell me what is excluded from this plan.",exclusion
+INT-BENEFIT-046,I want to know: Does my plan include hospital benefits?,benefit
+INT-WAITING_PERIOD-093,do i need to wait before using this benefit?,waiting_period
+INT-DOCUMENTATION-054,Can you tell me what should i submit for hospitalization?,documentation
+INT-EXCLUSION-100,I want to know: Are there treatments that this policy does not cover?,exclusion
+INT-BENEFIT-054,Can you tell me tell me about the benefits in my policy.,benefit
+INT-EXCLUSION-060,Can you tell me tell me what is excluded from this plan.,exclusion
+INT-ESCALATION-025,tell me for certain that the claim will be accepted.,escalation
+INT-DOCUMENTATION-068,I want to know: What documents do I need?,documentation
+INT-EXCLUSION-044,"Please tell me, what is excluded from my policy?",exclusion
+INT-BENEFIT-087,I want to know: What coverage does my policy provide?,benefit
+INT-ESCALATION-056,Can you tell me tell me for certain that the claim will be accepted.,escalation
+INT-DOCUMENTATION-065,"Please tell me, which documents do i need to provide?",documentation
+INT-EXCLUSION-059,What are the general exclusions in my policy?,exclusion
+INT-DOCUMENTATION-032,I want to know: What documents should I provide with my request?,documentation
+INT-ESCALATION-013,I want to know: Can you promise that my claim will be paid?,escalation
+INT-DOCUMENTATION-037,Can you tell me what documentation is required by my policy?,documentation
+INT-ESCALATION-075,"Please tell me, tell me my claim will definitely be accepted.",escalation
+INT-ESCALATION-069,"Please tell me, promise that this treatment will be approved.",escalation
+INT-ESCALATION-023,guarantee my reimbursement.,escalation
+INT-WAITING_PERIOD-018,when can i use this benefit?,waiting_period
+INT-WAITING_PERIOD-085,does my plan have a waiting period?,waiting_period
+INT-WAITING_PERIOD-080,I want to know: How many days is the waiting period?,waiting_period
+INT-DOCUMENTATION-006,Can you tell me what papers should i submit?,documentation
+INT-ESCALATION-003,Can you tell me can you guarantee coverage for my claim?,escalation
+INT-WAITING_PERIOD-078,explain the waiting period in my policy.,waiting_period
+INT-WAITING_PERIOD-012,Can you tell me how long do i need to wait?,waiting_period
+INT-DOCUMENTATION-079,I want to know: Which supporting documents are required?,documentation
+INT-EXCLUSION-053,"Please tell me, what are the general exclusions in my policy?",exclusion
+INT-BENEFIT-032,"Please tell me, is this treatment covered under my plan?",benefit
+INT-WAITING_PERIOD-086,how many days is the waiting period?,waiting_period
+INT-BENEFIT-049,what coverage does my policy provide?,benefit
+INT-BENEFIT-017,is hospitalization covered?,benefit
