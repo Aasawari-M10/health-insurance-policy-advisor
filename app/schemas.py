@@ -24,6 +24,7 @@ class AskRequest(BaseModel):
 class AskResponse(BaseModel):
     answer: str
     intent: Optional[str] = None
+    confidence: float | None = None
     plan_id: Optional[str] = None
     version: Optional[str] = None
     source_clauses: list[str] = []

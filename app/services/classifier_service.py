@@ -1,35 +1,109 @@
-VALID_INTENTS = {
-    "benefit",
-    "waiting_period",
-    "exclusion",
-    "documentation",
-    "escalation",
-}
+from pathlib import Path
+
+import torch
+from transformers import (
+    AutoModelForSequenceClassification,
+    AutoTokenizer,
+)
 
 
-def classify_intent(question: str) -> str:
-    """
-    Temporary rule-based intent classifier.
+MODEL_PATH = Path("models/intent_classifier")
 
-    This will later be replaced by the trained
-    Hugging Face intent classification model.
-    """
 
-    text = question.lower()
+class IntentClassifierService:
 
-    if "document" in text:
-        return "documentation"
+    def __init__(self):
 
-    if "waiting" in text or "wait" in text:
-        return "waiting_period"
+        if not MODEL_PATH.exists():
+            raise FileNotFoundError(
+                f"Intent classifier model not found: "
+                f"{MODEL_PATH}"
+            )
 
-    if "exclude" in text or "exclusion" in text:
-        return "exclusion"
+        self.device = torch.device(
+            "cuda"
+            if torch.cuda.is_available()
+            else "cpu"
+        )
 
-    if "guarantee" in text or "definitely" in text:
-        return "escalation"
+        print(
+            f"Loading intent classifier on "
+            f"{self.device}"
+        )
 
-    if "cover" in text or "benefit" in text:
-        return "benefit"
+        self.tokenizer = (
+            AutoTokenizer.from_pretrained(
+                MODEL_PATH
+            )
+        )
 
-    return "escalation"
+        self.model = (
+            AutoModelForSequenceClassification
+            .from_pretrained(
+                MODEL_PATH
+            )
+        )
+
+        self.model.to(self.device)
+
+        self.model.eval()
+
+    def classify_intent(
+        self,
+        question: str,
+    ) -> dict:
+
+        encoded = self.tokenizer(
+            question,
+            return_tensors="pt",
+            truncation=True,
+            padding=True,
+            max_length=64,
+        )
+
+        encoded = {
+            key: value.to(self.device)
+            for key, value in encoded.items()
+        }
+
+        with torch.no_grad():
+
+            output = self.model(
+                **encoded
+            )
+
+        probabilities = torch.softmax(
+            output.logits,
+            dim=-1,
+        )
+
+        confidence, predicted_id = (
+            torch.max(
+                probabilities,
+                dim=-1,
+            )
+        )
+
+        label = self.model.config.id2label[
+            predicted_id.item()
+        ]
+
+        return {
+            "intent": label,
+            "confidence": round(
+                confidence.item(),
+                4,
+            ),
+        }
+
+
+intent_classifier_service = (
+    IntentClassifierService()
+)
+
+
+def classify_intent(question: str) -> dict:
+    return (
+        intent_classifier_service
+        .classify_intent(question)
+    )
