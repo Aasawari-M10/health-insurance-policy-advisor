@@ -1,21 +1,37 @@
 import os
 
 from dotenv import load_dotenv
+
 from azure.core.credentials import AzureKeyCredential
-from azure.search.documents.indexes import SearchIndexClient
+from azure.core.exceptions import ResourceNotFoundError
+
+from azure.search.documents.indexes import (
+    SearchIndexClient,
+)
+
 from azure.search.documents.indexes.models import (
+    HnswAlgorithmConfiguration,
+    SearchField,
     SearchFieldDataType,
     SearchIndex,
     SearchableField,
     SimpleField,
+    VectorSearch,
+    VectorSearchProfile,
 )
 
 
 load_dotenv()
 
 
-SEARCH_ENDPOINT = os.getenv("AZURE_SEARCH_ENDPOINT")
-SEARCH_ADMIN_KEY = os.getenv("AZURE_SEARCH_ADMIN_KEY")
+SEARCH_ENDPOINT = os.getenv(
+    "AZURE_SEARCH_ENDPOINT"
+)
+
+SEARCH_ADMIN_KEY = os.getenv(
+    "AZURE_SEARCH_ADMIN_KEY"
+)
+
 INDEX_NAME = os.getenv(
     "AZURE_SEARCH_INDEX_NAME",
     "policy-index",
@@ -44,7 +60,32 @@ index_client = SearchIndexClient(
 )
 
 
+# --------------------------------------------------
+# Vector search configuration
+# --------------------------------------------------
+
+vector_search = VectorSearch(
+    algorithms=[
+        HnswAlgorithmConfiguration(
+            name="policy-hnsw"
+        )
+    ],
+
+    profiles=[
+        VectorSearchProfile(
+            name="policy-vector-profile",
+            algorithm_configuration_name="policy-hnsw",
+        )
+    ],
+)
+
+
+# --------------------------------------------------
+# Index fields
+# --------------------------------------------------
+
 fields = [
+
     SimpleField(
         name="clause_id",
         type=SearchFieldDataType.String,
@@ -85,28 +126,57 @@ fields = [
         type=SearchFieldDataType.String,
         searchable=True,
     ),
+
+    SearchField(
+        name="content_vector",
+        type=SearchFieldDataType.Collection(
+            SearchFieldDataType.Single
+        ),
+        searchable=True,
+        vector_search_dimensions=1536,
+        vector_search_profile_name=(
+            "policy-vector-profile"
+        ),
+    ),
 ]
 
 
 policy_index = SearchIndex(
     name=INDEX_NAME,
     fields=fields,
+    vector_search=vector_search,
 )
 
 
 def create_policy_index():
 
-    print(
-        f"Creating Azure AI Search index: "
-        f"{INDEX_NAME}"
-    )
+    # Development only:
+    # recreate the index so the schema includes
+    # the vector field.
 
-    result = index_client.create_or_update_index(
+    try:
+
+        index_client.delete_index(
+            INDEX_NAME
+        )
+
+        print(
+            f"Deleted existing index: "
+            f"{INDEX_NAME}"
+        )
+
+    except ResourceNotFoundError:
+
+        print(
+            "Existing index not found."
+        )
+
+    result = index_client.create_index(
         policy_index
     )
 
     print(
-        f"Index created successfully: "
+        f"Vector index created successfully: "
         f"{result.name}"
     )
 

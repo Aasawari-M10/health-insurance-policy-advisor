@@ -5,6 +5,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
+from app.services.embedding_service import (
+    generate_embedding,
+)
 
 
 load_dotenv()
@@ -106,6 +109,9 @@ def load_policy_clauses():
                 "category": clause["category"],
                 "section": clause["section"],
                 "text": clause["text"],
+                "content_vector": generate_embedding(
+                    clause["text"]
+                ),
             }
 
             documents.append(document)
