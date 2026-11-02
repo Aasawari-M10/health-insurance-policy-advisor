@@ -187,3 +187,91 @@ def vector_search(
         )
 
     return clauses
+
+def hybrid_search(
+    question: str,
+    plan_id: str,
+    version: str,
+    category: str | None = None,
+    top: int = 3,
+):
+    """
+    Retrieve policy clauses using both
+    keyword and vector search.
+    """
+
+    # Create semantic representation
+    # of the user's question.
+    query_vector = generate_embedding(
+        question
+    )
+
+    filters = [
+        f"plan_id eq '{plan_id}'",
+        f"version eq '{version}'",
+    ]
+
+    if category:
+        filters.append(
+            f"category eq '{category}'"
+        )
+
+    filter_expression = " and ".join(
+        filters
+    )
+
+    vector_query = VectorizedQuery(
+        vector=query_vector,
+        k_nearest_neighbors=top,
+        fields="content_vector",
+    )
+
+    results = search_client.search(
+        search_text=question,
+        vector_queries=[
+            vector_query
+        ],
+        filter=filter_expression,
+        top=top,
+        select=[
+            "clause_id",
+            "plan_id",
+            "version",
+            "category",
+            "section",
+            "text",
+        ],
+    )
+
+    clauses = []
+
+    for result in results:
+
+        clauses.append(
+            {
+                "clause_id":
+                    result["clause_id"],
+
+                "plan_id":
+                    result["plan_id"],
+
+                "version":
+                    result["version"],
+
+                "category":
+                    result["category"],
+
+                "section":
+                    result["section"],
+
+                "text":
+                    result["text"],
+
+                "score":
+                    result.get(
+                        "@search.score"
+                    ),
+            }
+        )
+
+    return clauses
