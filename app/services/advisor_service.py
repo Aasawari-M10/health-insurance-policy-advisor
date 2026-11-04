@@ -2,6 +2,11 @@ from app.services.classifier_service import classify_intent
 from app.services.plan_service import get_active_plan_version
 from app.services.rag_service import retrieve_and_build_context
 from app.services.llm_service import generate_answer
+from app.services.guardrail_service import (
+    validate_request,
+    validate_retrieval,
+    validate_answer,
+)
 
 
 def process_question(
@@ -10,60 +15,65 @@ def process_question(
     version: str | None = None,
 ):
     """
-    Coordinate the end-to-end policy advisor workflow.
+    Coordinate the complete policy-advisor workflow.
+
+    Flow:
+    Question
+        -> Intent classification
+        -> Plan/version resolution
+        -> Request guardrails
+        -> Hybrid retrieval + RAG context
+        -> Retrieval guardrails
+        -> LLM generation
+        -> Output guardrails
+        -> Final response
     """
 
-    # 1. Intent classification
-    classification = classify_intent(question)
+    # --------------------------------------------------
+    # 1. Classify user intent
+    # --------------------------------------------------
+
+    classification = classify_intent(
+        question
+    )
 
     intent = classification["intent"]
     confidence = classification["confidence"]
 
+
+    # --------------------------------------------------
     # 2. Resolve policy version
+    # --------------------------------------------------
+
     resolved_version = version
 
     if plan_id and not resolved_version:
-        plan = get_active_plan_version(plan_id)
+
+        plan = get_active_plan_version(
+            plan_id
+        )
 
         if plan:
-            resolved_version = plan.get("version")
+            resolved_version = plan.get(
+                "version"
+            )
 
-    # 3. Require plan
-    if not plan_id:
-        return {
-            "answer": (
-                "Please select an insurance plan "
-                "before asking a policy question."
-            ),
-            "intent": intent,
-            "confidence": confidence,
-            "plan_id": None,
-            "version": None,
-            "source_clauses": [],
-        }
 
-    # 4. Require version
-    if not resolved_version:
-        return {
-            "answer": (
-                "I could not determine the applicable "
-                "policy version."
-            ),
-            "intent": intent,
-            "confidence": confidence,
-            "plan_id": plan_id,
-            "version": None,
-            "source_clauses": [],
-        }
+    # --------------------------------------------------
+    # 3. PRE-RAG GUARDRAILS
+    # --------------------------------------------------
 
-    # 5. Temporary escalation handling
-    if intent == "escalation":
+    request_check = validate_request(
+        question=question,
+        plan_id=plan_id,
+        version=resolved_version,
+        intent=intent,
+    )
+
+    if not request_check["allowed"]:
+
         return {
-            "answer": (
-                "This request requires human review. "
-                "I cannot guarantee claim approval or "
-                "make a final coverage decision."
-            ),
+            "answer": request_check["message"],
             "intent": intent,
             "confidence": confidence,
             "plan_id": plan_id,
@@ -71,7 +81,11 @@ def process_question(
             "source_clauses": [],
         }
 
-    # 6. Azure AI Search + RAG
+
+    # --------------------------------------------------
+    # 4. RETRIEVE EVIDENCE + BUILD RAG CONTEXT
+    # --------------------------------------------------
+
     rag_result = retrieve_and_build_context(
         question=question,
         intent=intent,
@@ -80,13 +94,25 @@ def process_question(
         top=3,
     )
 
-    # 7. No supporting evidence
-    if not rag_result["source_clause_ids"]:
+
+    # --------------------------------------------------
+    # 5. RETRIEVAL GUARDRAILS
+    # --------------------------------------------------
+
+    retrieval_check = validate_retrieval(
+        clauses=rag_result[
+            "retrieved_clauses"
+        ],
+        plan_id=plan_id,
+        version=resolved_version,
+    )
+
+    if not retrieval_check["allowed"]:
+
         return {
-            "answer": (
-                "I could not find supporting policy "
-                "information for this question."
-            ),
+            "answer": retrieval_check[
+                "message"
+            ],
             "intent": intent,
             "confidence": confidence,
             "plan_id": plan_id,
@@ -94,13 +120,56 @@ def process_question(
             "source_clauses": [],
         }
 
-    # 8. Generate grounded answer
+
+    # --------------------------------------------------
+    # 6. GENERATE GROUNDED ANSWER
+    # --------------------------------------------------
+
     answer = generate_answer(
-        system_prompt=rag_result["system_prompt"],
-        grounded_prompt=rag_result["grounded_prompt"],
+        system_prompt=rag_result[
+            "system_prompt"
+        ],
+        grounded_prompt=rag_result[
+            "grounded_prompt"
+        ],
     )
 
-    # 9. Final API response
+
+    # --------------------------------------------------
+    # 7. POST-LLM GUARDRAILS
+    # --------------------------------------------------
+
+    answer_check = validate_answer(
+        answer=answer,
+        source_clause_ids=rag_result[
+            "source_clause_ids"
+        ],
+    )
+
+    if not answer_check["allowed"]:
+
+        return {
+            "answer": (
+                "I could not provide a verified "
+                "policy answer from the available "
+                "evidence. Please review the "
+                "applicable policy wording or "
+                "contact a human advisor."
+            ),
+            "intent": intent,
+            "confidence": confidence,
+            "plan_id": plan_id,
+            "version": resolved_version,
+            "source_clauses": rag_result[
+                "source_clause_ids"
+            ],
+        }
+
+
+    # --------------------------------------------------
+    # 8. FINAL VALIDATED RESPONSE
+    # --------------------------------------------------
+
     return {
         "answer": answer,
         "intent": intent,
