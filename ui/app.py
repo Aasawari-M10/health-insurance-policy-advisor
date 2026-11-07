@@ -303,6 +303,10 @@ API_TIMEOUT = int(
     )
 )
 API_TIMEOUT = int(os.getenv("POLICY_ADVISOR_API_TIMEOUT", "45"))
+COMPARE_API_URL = os.getenv(
+    "POLICY_ADVISOR_COMPARE_API_URL",
+    "http://localhost:8000/compare",
+)
 
 def check_backend_health() -> bool:
     try:
@@ -351,6 +355,12 @@ PLAN_ID_MAP = {
     "Silver Health Plan": "PLAN001",
     "Gold Health Plan": "PLAN002",
     "Platinum Health Plan": "PLAN003",
+}
+CATEGORY_MAP = {
+    "Benefits": "benefit",
+    "Waiting Periods": "waiting_period",
+    "Exclusions": "exclusion",
+    "Required Documents": "documentation",
 }
 def call_advisor_api(
     question: str,
@@ -451,7 +461,90 @@ def call_advisor_api(
         "raw": data,
     }
 
+def call_comparison_api(
+    question: str,
+    plan_a: str,
+    version_a: str,
+    plan_b: str,
+    version_b: str,
+    category: str,
+) -> Dict[str, Any]:
+    """
+    Call FastAPI POST /compare.
+    """
 
+    plan_a_id = PLAN_ID_MAP[plan_a]
+    plan_b_id = PLAN_ID_MAP[plan_b]
+
+    version_a_value = version_a.split(" ")[0]
+    version_b_value = version_b.split(" ")[0]
+
+    category_value = CATEGORY_MAP[category]
+
+    payload = {
+        "question": question,
+        "plan_a_id": plan_a_id,
+        "plan_a_version": version_a_value,
+        "plan_b_id": plan_b_id,
+        "plan_b_version": version_b_value,
+        "category": category_value,
+        "top": 3,
+    }
+
+    response = requests.post(
+        COMPARE_API_URL,
+        json=payload,
+        timeout=API_TIMEOUT,
+    )
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    return {
+    "answer": safe_text(
+        data.get("answer")
+    ),
+
+    "summary": safe_text(
+        data.get("summary")
+    ),
+
+    "comparison_rows": (
+        data.get("comparison_rows")
+        or []
+    ),
+
+    "plan_a_id": safe_text(
+        data.get("plan_a_id")
+    ),
+
+    "plan_a_version": safe_text(
+        data.get("plan_a_version")
+    ),
+
+    "plan_b_id": safe_text(
+        data.get("plan_b_id")
+    ),
+
+    "plan_b_version": safe_text(
+        data.get("plan_b_version")
+    ),
+
+    "sources_a": (
+        data.get("sources_a")
+        or []
+    ),
+
+    "sources_b": (
+        data.get("sources_b")
+        or []
+    ),
+
+    "status": safe_text(
+        data.get("status")
+    ),
+}
 def ask_advisor(
     question: str,
     plan: str,
@@ -731,7 +824,431 @@ with st.sidebar:
         "<div class='footer'>✦ Powered by Microsoft Azure<br>Privacy · Terms · Help</div>",
         unsafe_allow_html=True,
     )
+if selected_nav == "⚖️  Compare Plans":
 
+    st.markdown(
+        "<div class='main-title'>Compare Health Plans</div>",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+        <div class='main-subtitle'>
+        Compare two fictional health insurance plans
+        using grounded policy evidence.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+        <div class='warning'>
+        ⚠️ Comparisons are based only on retrieved
+        policy clauses. They do not guarantee claim
+        or coverage approval.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    plan_a_col, vs_col, plan_b_col = st.columns(
+        [1, 0.2, 1],
+        vertical_alignment="center",
+    )
+
+
+    # --------------------------------------------
+    # Plan A
+    # --------------------------------------------
+
+    with plan_a_col:
+
+        st.markdown("### Plan A")
+
+        compare_plan_a = st.selectbox(
+            "Select first plan",
+            list(PLAN_ID_MAP.keys()),
+            index=0,
+            key="compare_plan_a",
+        )
+
+        compare_version_a = st.selectbox(
+            "Version",
+            [
+                "v2 (Active)",
+                "v1 (Archived)",
+            ],
+            index=1,
+            key="compare_version_a",
+        )
+
+
+    # --------------------------------------------
+    # VS
+    # --------------------------------------------
+
+    with vs_col:
+
+        st.markdown(
+            """
+            <div style="
+                text-align:center;
+                font-size:22px;
+                font-weight:800;
+                padding-top:35px;
+            ">
+                VS
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+
+    # --------------------------------------------
+    # Plan B
+    # --------------------------------------------
+
+    with plan_b_col:
+
+        st.markdown("### Plan B")
+
+        compare_plan_b = st.selectbox(
+            "Select second plan",
+            list(PLAN_ID_MAP.keys()),
+            index=1,
+            key="compare_plan_b",
+        )
+
+        compare_version_b = st.selectbox(
+            "Version",
+            [
+                "v2 (Active)",
+                "v1 (Archived)",
+            ],
+            index=1,
+            key="compare_version_b",
+        )
+
+
+    # --------------------------------------------
+    # Category
+    # --------------------------------------------
+
+    compare_category = st.selectbox(
+        "What would you like to compare?",
+        list(CATEGORY_MAP.keys()),
+        index=0,
+        key="compare_category",
+    )
+
+
+    # --------------------------------------------
+    # Build question
+    # --------------------------------------------
+
+    comparison_question = (
+        f"Compare the {compare_category.lower()} "
+        f"of {compare_plan_a} and "
+        f"{compare_plan_b}."
+    )
+
+
+    # --------------------------------------------
+    # Compare button
+    # --------------------------------------------
+
+    if st.button(
+        "⚖️ Compare Plans",
+        type="primary",
+        use_container_width=True,
+    ):
+
+        if (
+            compare_plan_a == compare_plan_b
+            and compare_version_a
+            == compare_version_b
+        ):
+
+            st.warning(
+                "Please select two different "
+                "policies for comparison."
+            )
+
+        else:
+
+            try:
+
+                with st.spinner(
+                    "Retrieving policy evidence "
+                    "and comparing plans..."
+                ):
+
+                    comparison_result = (
+                        call_comparison_api(
+                            question=(
+                                comparison_question
+                            ),
+                            plan_a=(
+                                compare_plan_a
+                            ),
+                            version_a=(
+                                compare_version_a
+                            ),
+                            plan_b=(
+                                compare_plan_b
+                            ),
+                            version_b=(
+                                compare_version_b
+                            ),
+                            category=(
+                                compare_category
+                            ),
+                        )
+                    )
+
+                st.session_state[
+                    "comparison_result"
+                ] = comparison_result
+
+            except requests.RequestException as exc:
+
+                st.error(
+                    "The comparison service "
+                    "could not be reached."
+                )
+
+                st.session_state.api_error = str(
+                    exc
+                )
+
+
+    # --------------------------------------------
+    # Display result
+    # --------------------------------------------
+
+    result = st.session_state.get(
+        "comparison_result"
+    )
+
+    if result:
+
+        st.markdown("---")
+
+        st.markdown(
+            "## 📊 Policy Comparison"
+        )
+
+        # ==========================================
+        # TABULAR COMPARISON
+        # ==========================================
+
+        rows = result.get(
+            "comparison_rows",
+            []
+        )
+
+        if rows:
+
+            table_data = []
+
+            for row in rows:
+
+                table_data.append(
+                    {
+                        "Feature": row.get(
+                            "feature",
+                            ""
+                        ),
+
+                        compare_plan_a: row.get(
+                            "plan_a",
+                            ""
+                        ),
+
+                        compare_plan_b: row.get(
+                            "plan_b",
+                            ""
+                        ),
+
+                        "Difference": row.get(
+                            "difference",
+                            ""
+                        ),
+                    }
+                )
+
+            st.dataframe(
+                table_data,
+                use_container_width=True,
+                hide_index=True,
+            )
+
+        else:
+
+            st.warning(
+                "No structured comparison "
+                "rows were returned."
+            )
+
+        # ==========================================
+        # KEY TAKEAWAY
+        # ==========================================
+
+        summary = result.get(
+            "summary",
+            ""
+        )
+
+        if summary:
+
+            st.markdown(
+                "### 💡 Key Takeaway"
+            )
+
+            st.info(
+                summary
+            )
+
+        # ==========================================
+        # STATUS
+        # ==========================================
+
+        status = result.get(
+            "status",
+            ""
+        )
+
+        if status:
+
+            st.caption(
+                f"Status: {status}"
+            )
+
+        # ==========================================
+        # SUPPORTING SOURCES
+        # ==========================================
+
+        st.markdown(
+            "### 📚 Supporting Policy Evidence"
+        )
+
+        source_a_col, source_b_col = (
+            st.columns(2)
+        )
+
+        # ------------------------------------------
+        # PLAN A
+        # ------------------------------------------
+
+        with source_a_col:
+
+            st.markdown(
+                f"### {compare_plan_a}"
+            )
+
+            st.write(
+                "**Plan ID:**",
+                result.get(
+                    "plan_a_id",
+                    ""
+                ),
+            )
+
+            st.write(
+                "**Version:**",
+                result.get(
+                    "plan_a_version",
+                    ""
+                ),
+            )
+
+            st.markdown(
+                "#### Supporting Clauses"
+            )
+
+            sources_a = result.get(
+                "sources_a",
+                []
+            )
+
+            if sources_a:
+
+                for clause_id in sources_a:
+
+                    st.success(
+                        f"📄 {clause_id}"
+                    )
+
+            else:
+
+                st.caption(
+                    "No supporting clauses "
+                    "were returned."
+                )
+
+        # ------------------------------------------
+        # PLAN B
+        # ------------------------------------------
+
+        with source_b_col:
+
+            st.markdown(
+                f"### {compare_plan_b}"
+            )
+
+            st.write(
+                "**Plan ID:**",
+                result.get(
+                    "plan_b_id",
+                    ""
+                ),
+            )
+
+            st.write(
+                "**Version:**",
+                result.get(
+                    "plan_b_version",
+                    ""
+                ),
+            )
+
+            st.markdown(
+                "#### Supporting Clauses"
+            )
+
+            sources_b = result.get(
+                "sources_b",
+                []
+            )
+
+            if sources_b:
+
+                for clause_id in sources_b:
+
+                    st.success(
+                        f"📄 {clause_id}"
+                    )
+
+            else:
+
+                st.caption(
+                    "No supporting clauses "
+                    "were returned."
+                )
+
+    else:
+
+        st.info(
+            "Select two plans and click "
+            "'Compare Plans' to generate "
+            "a grounded comparison."
+        )
+
+
+    # Prevent normal Chat UI from rendering
+    # while Compare Plans page is selected.
+    st.stop()
 # ============================================================
 # HEADER / HERO
 # ============================================================
