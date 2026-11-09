@@ -2,7 +2,8 @@ import os
 import html
 from datetime import date, datetime
 from typing import Any, Dict
-
+from urllib.parse import quote
+import base64
 import requests
 import streamlit as st
 
@@ -731,6 +732,79 @@ def ask_advisor(
             }
         )
 
+def get_policy_documents():
+    """Get available policy documents from the backend."""
+
+    try:
+        response = requests.get(
+            f"{API_BASE_URL}/policy-documents",
+            timeout=30,
+        )
+
+        response.raise_for_status()
+
+        return response.json().get("documents", [])
+
+    except requests.RequestException as exc:
+        st.error(f"Unable to load policy documents: {exc}")
+        return []
+
+def get_policy_document(filename: str):
+    """Retrieve a policy PDF from the backend."""
+
+    try:
+        response = requests.get(
+            f"{API_BASE_URL}/policy-documents/{filename}",
+            timeout=30,
+        )
+
+        response.raise_for_status()
+
+        return response.content
+
+    except requests.RequestException as exc:
+        st.error(f"Unable to load policy document: {exc}")
+        return None
+
+def get_policy_document(filename: str):
+    """Retrieve a policy PDF from the backend."""
+
+    try:
+        encoded_filename = quote(filename, safe="")
+
+        response = requests.get(
+            f"{API_BASE_URL}/policy-documents/{encoded_filename}",
+            timeout=30,
+        )
+
+        response.raise_for_status()
+
+        return response.content
+
+    except requests.RequestException as exc:
+        st.error(f"Unable to load policy document: {exc}")
+        return None
+
+documents = get_policy_documents()
+
+def display_pdf(pdf_bytes: bytes):
+    """Display a PDF document inside Streamlit."""
+
+    base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
+
+    pdf_display = f"""
+        <iframe
+            src="data:application/pdf;base64,{base64_pdf}"
+            width="100%"
+            height="700"
+            type="application/pdf">
+        </iframe>
+    """
+
+    st.markdown(
+        pdf_display,
+        unsafe_allow_html=True,
+    )
 
 # ============================================================
 # SIDEBAR — NAVIGATION, POLICY SELECTION AND GLOBAL THEME
@@ -1305,6 +1379,52 @@ for index, (icon, title, description, prompt) in enumerate(quick_actions):
             st.rerun()
 
 st.write("")
+st.subheader("📄 Policy Documents")
+
+documents = get_policy_documents()
+
+if documents:
+
+    selected_document = st.selectbox(
+        "Select a policy document",
+        documents,
+        format_func=lambda path: path.split("/")[-1]
+    )
+
+    if selected_document:
+
+        if st.button("View Policy Document"):
+
+            pdf_bytes = get_policy_document(selected_document)
+
+            if pdf_bytes:
+
+                st.session_state["policy_pdf"] = pdf_bytes
+                st.session_state["policy_pdf_name"] = selected_document
+
+
+    if "policy_pdf" in st.session_state:
+
+        display_pdf(
+            st.session_state["policy_pdf"]
+        )
+
+        filename = st.session_state[
+            "policy_pdf_name"
+        ].split("/")[-1]
+
+        st.download_button(
+            label="⬇️ Download Policy Document",
+            data=st.session_state["policy_pdf"],
+            file_name=filename,
+            mime="application/pdf",
+        )
+
+else:
+
+    st.info(
+        "No policy documents are currently available."
+    )
 
 # ============================================================
 # MAIN CONVERSATION + RIGHT INFORMATION RAIL

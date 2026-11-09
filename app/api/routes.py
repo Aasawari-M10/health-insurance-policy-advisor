@@ -7,6 +7,13 @@ from app.services.advisor_service import process_question
 from app.services.comparison_service import (
     generate_plan_comparison,
 )
+from fastapi import HTTPException
+from fastapi.responses import Response
+
+from app.services.policy_document_service import (
+    list_policy_documents,
+    get_policy_document,
+)
 
 router = APIRouter()
 
@@ -86,3 +93,48 @@ def compare_plans(
 
     status=result["status"],
 )
+@router.get("/policy-documents")
+def get_policy_documents():
+    try:
+        documents = list_policy_documents()
+
+        return {
+            "documents": documents
+        }
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unable to retrieve policy documents: {str(exc)}"
+        )
+
+@router.get("/policy-documents/{filename:path}")
+def download_policy_document(filename: str):
+    try:
+        document = get_policy_document(filename)
+
+        return Response(
+            content=document,
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f'inline; filename="{filename}"'
+            },
+        )
+
+    except FileNotFoundError:
+        raise HTTPException(
+            status_code=404,
+            detail="Policy document not found."
+        )
+
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc)
+        )
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unable to retrieve policy document: {str(exc)}"
+        )
