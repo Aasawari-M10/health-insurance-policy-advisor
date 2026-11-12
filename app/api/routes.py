@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.schemas import AskRequest, AskResponse, CompareRequest,CompareResponse
+from app.schemas import AskRequest, AskResponse, CompareRequest,CompareResponse,PolicySummaryRequest
 from app.services.plan_service import get_all_plans
 from app.services.classifier_service import classify_intent
 from app.services.advisor_service import process_question
@@ -13,6 +13,10 @@ from fastapi.responses import Response
 from app.services.policy_document_service import (
     list_policy_documents,
     get_policy_document,
+)
+
+from app.services.policy_summary_service import (
+    summarize_policy_document,
 )
 
 router = APIRouter()
@@ -137,4 +141,42 @@ def download_policy_document(filename: str):
         raise HTTPException(
             status_code=500,
             detail=f"Unable to retrieve policy document: {str(exc)}"
+        )
+
+@router.post("/policy-summary")
+def create_policy_summary(
+    request: PolicySummaryRequest,
+):
+    """
+    Generate a whole-policy summary from the selected PDF
+    using Azure Document Intelligence and the existing
+    Foundry LLM.
+    """
+
+    try:
+        result = summarize_policy_document(
+            document_path=request.document_path,
+        )
+
+        return result
+
+    except FileNotFoundError:
+        raise HTTPException(
+            status_code=404,
+            detail="Policy document not found.",
+        )
+
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc),
+        )
+
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                "Unable to summarize the selected "
+                "policy document."
+            ),
         )

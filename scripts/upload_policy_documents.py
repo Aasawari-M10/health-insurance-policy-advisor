@@ -15,20 +15,28 @@ from app.services.blob_service import upload_policy_file
 
 POLICY_DOCUMENTS = [
     (
-        "data/documents/Silver_Health_Plan_v1.pdf",
+        "data/policies/Silver_Health_Plan_v1.pdf",
         "policies/silver/v1/Silver_Health_Plan_v1.pdf",
     ),
     (
-        "data/documents/Silver_Health_Plan_v2.pdf",
+        "data/policies/Silver_Health_Plan_v2.pdf",
         "policies/silver/v2/Silver_Health_Plan_v2.pdf",
-    ),
+    ), 
     (
-        "data/documents/Gold_Health_Plan_v1.pdf",
+        "data/policies/Gold_Health_Plan_v1.pdf",
         "policies/gold/v1/Gold_Health_Plan_v1.pdf",
     ),
     (
-        "data/documents/Platinum_Health_Plan_v1.pdf",
+        "data/policies/Gold_Health_Plan_v2.pdf",
+        "policies/gold/v2/Gold_Health_Plan_v2.pdf",
+    ),
+    (
+        "data/policies/Platinum_Health_Plan_v1.pdf",
         "policies/platinum/v1/Platinum_Health_Plan_v1.pdf",
+    ),
+    (
+        "data/policies/Platinum_Health_Plan_v2.pdf",
+        "policies/platinum/v2/Platinum_Health_Plan_v2.pdf",
     ),
 ]
 

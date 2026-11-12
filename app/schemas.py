@@ -2,7 +2,9 @@ from typing import Optional,List
 
 from pydantic import BaseModel, Field
 
-
+class PolicySummaryRequest(BaseModel):
+    document_path: str
+    
 class AskRequest(BaseModel):
     question: str = Field(
         ...,

@@ -16,7 +16,7 @@ load_dotenv()
 # --------------------------------------------------
 # Configuration
 # --------------------------------------------------
-
+DRY_RUN = False
 SEARCH_ENDPOINT = os.getenv(
     "AZURE_SEARCH_ENDPOINT"
 )
@@ -25,13 +25,10 @@ SEARCH_ADMIN_KEY = os.getenv(
     "AZURE_SEARCH_ADMIN_KEY"
 )
 
-INDEX_NAME = os.getenv(
-    "AZURE_SEARCH_INDEX_NAME",
-    "policy-index",
-)
+INDEX_NAME = "policy-index-v2"
 
 POLICY_FILE = Path(
-    "data/policy_clauses.jsonl"
+    "app/data/policy_clauses_v2.jsonl"
 )
 
 
@@ -101,7 +98,13 @@ def load_policy_clauses():
                     f"Invalid JSON on line "
                     f"{line_number}: {error}"
                 )
-
+            embedding_text = " ".join(
+                [
+                    clause.get("plan_name", ""),
+                    clause.get("section", ""),
+                    clause["text"],
+                ]
+            ).strip()
             document = {
                 "clause_id": clause["clause_id"],
                 "plan_id": clause["plan_id"],
@@ -110,11 +113,18 @@ def load_policy_clauses():
                 "section": clause["section"],
                 "text": clause["text"],
                 "content_vector": generate_embedding(
-                    clause["text"]
+                    embedding_text
                 ),
             }
 
             documents.append(document)
+            if (
+                line_number % 25 == 0
+                or line_number == 1
+            ):
+                print(
+                    f"Embedded {line_number} clauses..."
+    )
 
     return documents
 
@@ -137,7 +147,28 @@ def upload_policy_clauses():
         f"Loaded {len(documents)} "
         f"policy clauses."
     )
+    if DRY_RUN:
 
+        print(
+            "\nDRY RUN enabled."
+        )
+
+        print(
+            "Embeddings were generated, "
+            "but nothing was uploaded "
+            "to Azure AI Search."
+        )
+
+        dimensions = {
+            len(document["content_vector"])
+            for document in documents
+        }
+
+        print(
+            f"Vector dimensions: {dimensions}"
+        )
+
+        return
     print(
         f"Uploading documents to "
         f"Azure AI Search index: "

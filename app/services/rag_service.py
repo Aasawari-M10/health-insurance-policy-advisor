@@ -23,10 +23,7 @@ SEARCH_ADMIN_KEY = os.getenv(
     "AZURE_SEARCH_ADMIN_KEY"
 )
 
-INDEX_NAME = os.getenv(
-    "AZURE_SEARCH_INDEX_NAME",
-    "policy-index",
-)
+INDEX_NAME = "policy-index-v2"
 
 
 if not SEARCH_ENDPOINT:
